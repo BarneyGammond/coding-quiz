@@ -1,9 +1,15 @@
 import React from 'react';
-import './styling/App.css';
+import Question from './components/Question';
 
 function App() {
   return (
-    <p>hello world!</p>
+    <Question
+      question='What letter starts the alphabet?' 
+      answer='a'
+      false1='b'
+      false2='c'
+      false3='d'
+    />
   );
 }
 
