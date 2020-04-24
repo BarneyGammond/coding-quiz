@@ -1,0 +1,72 @@
+export default [
+    {
+        question: 'Question 1',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 2',
+        answer: '2Answer 1',
+        false1: '2False 1',
+        false2: '2False 2',
+        false3: '2False 3',
+    },
+    {
+        question: 'Question 3',
+        answer: '3Answer 1',
+        false1: '3False 1',
+        false2: '3False 2',
+        false3: '3False 3',
+    },
+    {
+        question: 'Question 4',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 5',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 6',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 7',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 8',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 9',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    },
+    {
+        question: 'Question 10',
+        answer: 'Answer 1',
+        false1: 'False 1',
+        false2: 'False 2',
+        false3: 'False 3',
+    }
+]

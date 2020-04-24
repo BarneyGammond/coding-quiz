@@ -8,10 +8,22 @@ p {
     font-size: 1.3em;
 }
 
+h1 {
+    color: var(--fg-colour);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2em;
+}
+
 h3 {
     color: var(--fg-colour);
     font-family: 'Baloo Bhaina 2', sans-serif;
     font-size: 1.6em;
+}
+
+.titleText {
+    text-align: center;
+    padding: 50px 0;
+    font-weight: 600;
 }
 
 .answerBody {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export default ({text, answer, response, handleAnswer}) => {
+export default ({text, answer, response, handleClicked}) => {
 
     let [className, setClassName] = useState('answerBody')
 
@@ -8,7 +8,8 @@ export default ({text, answer, response, handleAnswer}) => {
 
         if (!response) {
             setClassName(className += answer ? ' correct' : ' incorrect');
-            handleAnswer();
+            handleClicked();
+            setTimeout(()=> {setClassName('answerBody')},1500)
         }
 
     }
