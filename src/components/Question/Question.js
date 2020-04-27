@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import Answer from './Answer';
 import questions from '../../data/questionSet1'
+import history from '../../history'
 
 export default ({questionNumber,handleAnswer}) => {
 
     console.log('questionNumber at start of comp:' + questionNumber);
 
-    let {question,answer,false1,false2,false3} = questions[questionNumber-1]
+    let {question,answer,false1,false2,false3} = questionNumber < questions.length ? 
+        questions[questionNumber - 1] : 
+        questions[questionNumber - 2]
 
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -19,15 +22,20 @@ export default ({questionNumber,handleAnswer}) => {
         return array
     }
 
+    const [questionClasses,setQuestionClasses] = useState('questionWrapper show')
     const [questionText,setQuestionText] = useState(question)
     const [answerList,setAnswerList] = useState(shuffleArray([answer,false1,false2,false3]))
     const [answered,setAnswered] = useState(false);
 
-    const handleClicked = () => {
+    const handleClicked = (answer) => {
         setAnswered(true);
-        handleAnswer();
+        handleAnswer(answer);
         setTimeout(() => {
-            reset();
+            setQuestionClasses('questionWrapper');
+        },500)
+        setTimeout(() => {
+            setQuestionClasses('questionWrapper show')
+            questionNumber >= questions.length ? history.push('/results') : reset();
         },1500);
     }
 
@@ -40,18 +48,21 @@ export default ({questionNumber,handleAnswer}) => {
 
     return (
 
-        <div className='questionWrapper'>
-            <h3 className='question'>{questionText}</h3>
-            { answerList.map(content => (
+        <div className="questionWrapperFrame">
+            <div className={questionClasses}>
+                <h3 className='question'>{questionText}</h3>
+                { answerList.map((content,i) => (
 
-                <Answer 
-                    text={content} 
-                    answer={content===answer} 
-                    response={answered}
-                    handleClicked={handleClicked}
-                />
-
-            ))}
+                    <Answer 
+                        key={i}
+                        text={content} 
+                        answer={content===answer} 
+                        response={answered}
+                        handleClicked={handleClicked}
+                    />
+                    
+                ))}
+            </div>
         </div>
 
     )

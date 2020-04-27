@@ -10,7 +10,7 @@ const mapStateToProps = ({questionNumber}) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        handleAnswer: () => dispatch({type: 'Q_ANSWERED'})
+        handleAnswer: (answer) => dispatch({type: 'Q_ANSWERED', answer})
     }
 
 }

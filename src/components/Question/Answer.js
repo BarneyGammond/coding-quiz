@@ -8,7 +8,7 @@ export default ({text, answer, response, handleClicked}) => {
 
         if (!response) {
             setClassName(className += answer ? ' correct' : ' incorrect');
-            handleClicked();
+            handleClicked(answer);
             setTimeout(()=> {setClassName('answerBody')},1500)
         }
 

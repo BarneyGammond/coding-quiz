@@ -2,7 +2,7 @@ body {
     background-color: var(--bg-colour);
 }
 
-p {
+p, a{
     color: var(--fg-colour);
     font-family: 'Baloo Bhaina 2', sans-serif;
     font-size: 1.3em;
@@ -14,10 +14,28 @@ h1 {
     font-size: 2em;
 }
 
+h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.75em;
+}
+
 h3 {
     color: var(--fg-colour);
     font-family: 'Baloo Bhaina 2', sans-serif;
     font-size: 1.6em;
+}
+
+.buttonNav {
+    padding: 20px 30px;
+    border-radius: 5px;
+    background-color: var(--fg-colour);
+    color: var(--bg-colour);
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
 }
 
 .titleText {
@@ -67,11 +85,29 @@ h3 {
 }
 
 .questionWrapper {
-    width: 500px;
+    display: inline-block;
     margin: auto;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.questionWrapperFrame {
+    display: flex;
+    justify-content: center;
+}
+
+.questionWrapper.show {
+    animation: fadeIn 1s;
+    opacity: 1;
 }
 
 .question {
     text-align: center;
     font-weight: 600;
+}
+
+.resultsWrapper {
+    text-align: center;
+    padding: 100px 0;
+    animation: fadeIn 1s;
 }
