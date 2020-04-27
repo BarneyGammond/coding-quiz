@@ -5,8 +5,6 @@ import history from '../../history'
 
 export default ({questionNumber,handleAnswer}) => {
 
-    console.log('questionNumber at start of comp:' + questionNumber);
-
     let {question,answer,false1,false2,false3} = questionNumber < questions.length ? 
         questions[questionNumber - 1] : 
         questions[questionNumber - 2]

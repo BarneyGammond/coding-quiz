@@ -2,8 +2,6 @@ import questions from './questionSet1'
 
 const incrementQNumber = (state, action) => {
 
-    console.log(questions.length)
-
     let nextQuestionNumber = state.questionNumber < questions.length ?
         state.questionNumber += 1 :
         state.questionNumber
