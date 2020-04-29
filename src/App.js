@@ -5,6 +5,7 @@ import {Router, Route} from 'react-router-dom';
 import Start from './components/Start';
 import history from './history';
 import Results from './components/Question/Results/'
+import Loading from './components/Loading'
  
 function App() {
 
@@ -15,7 +16,9 @@ function App() {
 				<Start />
 			</Route>
 			<Route path='/quiz'>
-				<Question/>
+				<Loading>
+					<Question/>
+				</Loading>
 			</Route>
 			<Route path='/results'>
 				<Results />

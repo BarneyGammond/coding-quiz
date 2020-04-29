@@ -1,24 +1,19 @@
 import React, {useState} from 'react';
 import Answer from './Answer';
-import questions from '../../data/questionSet1'
 import history from '../../history'
+import shuffleArray from '../functions/shuffle'
 
-export default ({questionNumber,handleAnswer}) => {
+export default ({questionNumber,questions,handleAnswer}) => {
 
-    let {question,answer,false1,false2,false3} = questionNumber < questions.length ? 
+    let questionObject = questionNumber < questions.length ? 
         questions[questionNumber - 1] : 
         questions[questionNumber - 2]
 
-    function shuffleArray(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-
-        return array
-    }
+    let {question} = questionObject;
+    let answer = questionObject.correct_answer;
+    let false1 = questionObject.incorrect_answers[0];
+    let false2 = questionObject.incorrect_answers[1];
+    let false3 = questionObject.incorrect_answers[2];
 
     const [questionClasses,setQuestionClasses] = useState('questionWrapper show')
     const [questionText,setQuestionText] = useState(question)
@@ -38,10 +33,15 @@ export default ({questionNumber,handleAnswer}) => {
     }
 
     const reset = () => {
-        let {question,answer,false1,false2,false3} = questions[questionNumber];
+        let questionObject = questions[questionNumber];
+        let {question} = questionObject;
+        let answer = questionObject.correct_answer;
+        let false1 = questionObject.incorrect_answers[0];
+        let false2 = questionObject.incorrect_answers[1];
+        let false3 = questionObject.incorrect_answers[2];
         setQuestionText(question);
         setAnswerList(shuffleArray([answer,false1,false2,false3]));
-        setAnswered(false);
+        setAnswered(false)
     }
 
     return (

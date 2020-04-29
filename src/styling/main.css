@@ -61,15 +61,20 @@ h3 {
     background-color: var(--correct-colour);
 }
 
-.answerBody.correct .answerPoint{
-    background-color: var(--fg-colour);
-}
-
 .answerBody.incorrect {
     background-color: var(--false-colour);
 }
 
-.answerBody.incorrect .answerPoint{
+.answerBody.displayCorrect {
+    background-color: var(--fg-colour);
+}
+
+.answerBody.displayCorrect h3{
+    color: var(--bg-colour);
+}
+
+.answerBody.incorrect .answerPoint,
+.answerBody.correct .answerPoint,{
     background-color: var(--fg-colour);
 }
 

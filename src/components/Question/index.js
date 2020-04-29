@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import Question from './Question'
 
-const mapStateToProps = ({questionNumber}) => {
+const mapStateToProps = ({questionNumber,questions}) => {
     return {
-        questionNumber
+        questionNumber,
+        questions
     }
 }
 
