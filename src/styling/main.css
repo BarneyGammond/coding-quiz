@@ -73,6 +73,10 @@ h3 {
     color: var(--bg-colour);
 }
 
+.answerBody.displayCorrect .answerPoint {
+    border-color: var(--bg-color)
+}
+
 .answerBody.incorrect .answerPoint,
 .answerBody.correct .answerPoint,{
     background-color: var(--fg-colour);

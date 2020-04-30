@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import Question from './Question'
+import history from '../../history'
 
-const mapStateToProps = ({questionNumber,questions}) => {
+const mapStateToProps = ({questions}) => {
     return {
         questions
     }
@@ -10,7 +11,10 @@ const mapStateToProps = ({questionNumber,questions}) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        handleAnswer: (answer) => dispatch({type: 'Q_ANSWERED', answer})
+        handleAnswer: (answer, finalQuestion) => {
+            if (finalQuestion) {history.push('/results')}
+            dispatch({type: 'Q_ANSWERED', answer})
+        }
     }
 
 }
