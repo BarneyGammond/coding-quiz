@@ -4,6 +4,10 @@ export default ({text, answer, response, handleClicked}) => {
 
     let [className, setClassName] = useState('answerBody')
 
+    if (response) {
+        console.log(answer)
+    }
+
     const handleClick = () => {
 
         if (!response) {

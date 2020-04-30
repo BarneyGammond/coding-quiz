@@ -25,6 +25,7 @@ export default ({questionNumber,questions,handleAnswer}) => {
         handleAnswer(answer);
         setTimeout(() => {
             setQuestionClasses('questionWrapper');
+            setAnswered(false);
         },500)
         setTimeout(() => {
             setQuestionClasses('questionWrapper show')
@@ -41,8 +42,10 @@ export default ({questionNumber,questions,handleAnswer}) => {
         let false3 = questionObject.incorrect_answers[2];
         setQuestionText(question);
         setAnswerList(shuffleArray([answer,false1,false2,false3]));
-        setAnswered(false)
+
     }
+
+    console.log(answer);
 
     return (
 
