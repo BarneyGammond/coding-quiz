@@ -10,7 +10,6 @@ const loadedQuiz = (data) => {
 export const getQuiz = () => {
     return (dispatch) => {
         axios.get('').then(({data}) => {
-            console.log(data.results);
             dispatch(loadedQuiz(data.results))
         });
     };

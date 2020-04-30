@@ -1,64 +1,61 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import Answer from './Answer';
-import history from '../../history'
-import shuffleArray from '../functions/shuffle'
+import reducer from '../../data/questionState/reducer'
+import he from 'he'
 
-export default ({questionNumber,questions,handleAnswer}) => {
+const initial = {
+    questionNumber: 0,
+}
 
-    let questionObject = questionNumber < questions.length ? 
-        questions[questionNumber - 1] : 
-        questions[questionNumber - 2]
+export default ({questions,handleAnswer}) => {
 
-    let {question} = questionObject;
-    let answer = questionObject.correct_answer;
-    let false1 = questionObject.incorrect_answers[0];
-    let false2 = questionObject.incorrect_answers[1];
-    let false3 = questionObject.incorrect_answers[2];
+    const [state,dispatch] = useReducer(reducer,initial);
 
-    const [questionClasses,setQuestionClasses] = useState('questionWrapper show')
-    const [questionText,setQuestionText] = useState(question)
-    const [answerList,setAnswerList] = useState(shuffleArray([answer,false1,false2,false3]))
-    const [answered,setAnswered] = useState(false);
+    const [className,setClassName] = useState('questionWrapper show');
+    const [answered,setAnswered] = useState(false)
 
-    const handleClicked = (answer) => {
-        setAnswered(true);
-        handleAnswer(answer);
-        setTimeout(() => {
-            setQuestionClasses('questionWrapper');
-            setAnswered(false);
-        },500)
-        setTimeout(() => {
-            setQuestionClasses('questionWrapper show')
-            questionNumber >= questions.length ? history.push('/results') : reset();
-        },1500);
+    let setFirstQuestion = () => {
+        console.log(questions[state.questionNumber])
+        dispatch({
+            type: 'NEXT_QUESTION',
+            question: questions[state.questionNumber],
+        })
     }
 
-    const reset = () => {
-        let questionObject = questions[questionNumber];
-        let {question} = questionObject;
-        let answer = questionObject.correct_answer;
-        let false1 = questionObject.incorrect_answers[0];
-        let false2 = questionObject.incorrect_answers[1];
-        let false3 = questionObject.incorrect_answers[2];
-        setQuestionText(question);
-        setAnswerList(shuffleArray([answer,false1,false2,false3]));
+    let finalQ = state.questionNumber > questions.length - 1;
 
+    let handleClicked = (answer) => {
+        setAnswered(true)
+        setTimeout(() => {
+            setClassName('questionWrapper')
+        }, 500)
+        setTimeout(() => {
+            handleAnswer(answer, finalQ)
+            if (!finalQ) {
+                setClassName('questionWrapper show')
+                setAnswered(false)
+                dispatch({
+                    type: 'NEXT_QUESTION',
+                    question: questions[state.questionNumber]
+                })
+            }
+        }, 1500)
+        
     }
 
-    console.log(answer);
-
-    return (
+    return !state.questionNumber ? setFirstQuestion() : (
 
         <div className="questionWrapperFrame">
-            <div className={questionClasses}>
-                <h3 className='question'>{questionText}</h3>
-                { answerList.map((content,i) => (
+            <div className={className}>
+                <h3 className='question'>{he.decode(state.question)}</h3>
+                { state.answerList.map((content,i) => (
 
                     <Answer 
+                        finalQ={finalQ}
                         key={i}
                         text={content} 
-                        answer={content===answer} 
                         response={answered}
+                        answer={content===state.answer} 
                         handleClicked={handleClicked}
                     />
                     

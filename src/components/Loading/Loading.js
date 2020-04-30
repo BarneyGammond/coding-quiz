@@ -10,7 +10,7 @@ export default ({children, questionsLoaded, handleLoad}) => {
 
     return questionsLoaded ? children : (
 
-        <div>WAIT</div>
+        <div></div>
 
     )
 
