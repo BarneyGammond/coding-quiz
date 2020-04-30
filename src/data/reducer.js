@@ -1,8 +1,6 @@
 import questions from './questionSet1'
 
 const loadQuestions = (state, action) => {
-    console.log(state);
-    console.log(action.questions)
     return {
         ...state,
         questionsLoaded: true,

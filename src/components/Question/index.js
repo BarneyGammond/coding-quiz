@@ -3,7 +3,6 @@ import Question from './Question'
 
 const mapStateToProps = ({questionNumber,questions}) => {
     return {
-        questionNumber,
         questions
     }
 }
